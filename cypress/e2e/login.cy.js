@@ -1,6 +1,6 @@
 describe('Login', () => {
   beforeEach(() => {
-    cy.visit(Cypress.env('URL'))
+    cy.visit('/')
     cy.screenshot('visita do site')
   })
   it('Login com dados validos deve ter sucesso', () => {
