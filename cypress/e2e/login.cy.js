@@ -1,6 +1,9 @@
 describe('Login', () => {
-  it('Login com dados validos deve ter sucesso', () => {
+  beforeEach(() => {
     cy.visit('/')
+  })
+  it('Login com dados validos deve ter sucesso', () => {
+
     cy.get('#username').click().type('julio.lima')
     cy.get('#senha').click().type('123456')
     cy.get('#login-section > .btn').click()
@@ -9,7 +12,6 @@ describe('Login', () => {
   })
 
     it('Login com dados validos deve ter falha', () => {
-    cy.visit('/')
     cy.get('#username').click().type('julio.lima')
     cy.get('#senha').click().type('654321')
     cy.get('#login-section > .btn').click()
