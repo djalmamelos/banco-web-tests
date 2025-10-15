@@ -4,9 +4,10 @@ describe('Login', () => {
     cy.screenshot('visita do site')
   })
   it('Login com dados validos deve ter sucesso', () => {
-
-    cy.get('#username').click().type('julio.lima')
-    cy.get('#senha').click().type('123456')
+  cy.fixture('credenciais').then(credenciais =>{
+    cy.get('#username').click().type(credenciais.valida.username)
+    cy.get('#senha').click().type(credenciais.valida.senha)
+  })  
     cy.screenshot('digitar dados')
     cy.get('#login-section > .btn').click()
     cy.contains('h4','Realizar Transferência').should('be.visible');
@@ -14,9 +15,13 @@ describe('Login', () => {
   })
 
     it('Login com dados validos deve ter falha', () => {
-    cy.get('#username').click().type('julio.lima')
-    cy.get('#senha').click().type('654321')
+   cy.fixture('credenciais').then(credenciais =>{
+    cy.get('#username').click().type(credenciais.invalida.username)
+    cy.get('#senha').click().type(credenciais.invalida.senha)
+  })  
     cy.get('#login-section > .btn').click()
+    
+    //Assertion
     cy.get('#toast-container').should('have.text', 'Erro no login. Tente novamente.');
     })
 })
