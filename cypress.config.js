@@ -4,11 +4,11 @@ module.exports = defineConfig({
   watchForFileChanges: false,
  
   e2e: {
+    video:true, 
    baseUrl:'http://localhost:4000',
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
-    experimentalStudio: true
 
 
   },
